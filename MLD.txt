@@ -1,0 +1,28 @@
+UTILISATEUR (id_utilisateur, nom, prenom, telephone, email, mot_de_passe, role, actif)
+
+RESPONSABLE (#id_responsable, fonction, date_embauche, statut)
+
+CLIENT (#id_client)
+
+AGENT (#id_agent)
+
+JEU (id_jeu, nom, description, categorie, age_min, capacite, duree_session, tarif, etat, date_mise_en_service, actif)
+
+AFFECTER (#id_jeu, #id_responsable, date_debut, date_fin)
+
+MAINTENANCE (id_maintenance, type_intervention, description, date_intervention, cout, etat, date_prochaine, date_signalement, #id_jeu, #id_responsable)
+
+DEPENSE (id_depense, categorie, description, montant, date_depense, type, justificatif, #id_utilisateur, #id_jeu)
+
+ABONNEMENT (id_abonnement, numero, montant, date_debut, date_fin, #id_agent, #id_client)
+
+RESERVATION (id_reservation, numero, date_creation, date_visite, nb_personnes, montant, date_limite_paiement, statut, pdf, #id_client, #id_agent)
+
+CHOISIR (#id_reservation, #id_jeu)
+
+COMMANDE (id_commande, numero, date_commande, montant_total, mode_paiement, statut_paiement, #id_client, #id_agent)
+TYPE_BILLET (id_type_billet, libelle, prix, duree_validite_heures, description)
+
+CONTENIR (#id_commande, #id_type_billet, quantite, prix_unitaire, sous_total)
+
+BILLET (id_billet, code, utilise, date_utilisation, date_expiration, pdf, #id_type_billet, #id_reservation, #id_commande, #id_agent)
